@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataImportAgent", "DataImportAgent\DataImportAgent.csproj", "{4D1B0BEF-495C-4E2D-9386-458DB9FB45F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImportAgent.Test", "DataImportAgent.Test\DataImportAgent.Test.csproj", "{46A273D6-6602-44F3-9A5A-3C35E725CEFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D1B0BEF-495C-4E2D-9386-458DB9FB45F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1B0BEF-495C-4E2D-9386-458DB9FB45F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1B0BEF-495C-4E2D-9386-458DB9FB45F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1B0BEF-495C-4E2D-9386-458DB9FB45F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A273D6-6602-44F3-9A5A-3C35E725CEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A273D6-6602-44F3-9A5A-3C35E725CEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A273D6-6602-44F3-9A5A-3C35E725CEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A273D6-6602-44F3-9A5A-3C35E725CEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D994BE7-1ECB-441B-86EB-31C35EA7DE88}
+	EndGlobalSection
+EndGlobal

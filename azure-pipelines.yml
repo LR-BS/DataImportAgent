@@ -1,0 +1,71 @@
+trigger:
+  branches:
+    include:
+    - vdma-staging
+    - vdma-production
+
+
+pr:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.x'
+
+- task: NuGetToolInstaller@1
+- task: NuGetAuthenticate@1
+  inputs:
+    nuGetServiceConnections: 'NugetConnection'
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: 'Restore Solution Nuget Packages' 
+  inputs:
+    command: 'restore'
+    restoreSolution: '*.sln'
+    feedsToUse: 'select'
+    vstsFeed: '3a6a927d-594b-4258-b0a5-5761d0a1552b/c5c6183c-9b14-4164-8124-5d115cddac42'
+
+- task: NuGetCommand@2
+  name: "restore"
+  displayName: 'Restore Solution' 
+  inputs:
+    command: 'restore'
+    restoreSolution: '$(solution)'
+    feedsToUse: 'select'
+
+
+- task: DotNetCoreCLI@2
+  displayName: 'Building Solution' 
+  inputs:
+    command: 'build'
+    projects: 'DataImportAgent\DataImportAgent.csproj'
+  
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish Solution'
+  inputs:
+    command: 'publish'
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+    modifyOutputPath: true
+    projects: 'DataImportAgent\DataImportAgent.csproj'
+    configuration: '$(buildConfiguration)'
+    publishWebProjects: false
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Create Solution Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'DataMigrationArtifacts'
+    publishLocation: 'Container'   

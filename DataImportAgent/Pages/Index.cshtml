@@ -1,0 +1,63 @@
+﻿@page
+@using DataImportAgent.Pages;
+@model IndexModel
+@{
+    ViewData["Title"] = "Latest File Import History";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Job Status</th>
+            <th>Access Date</th>
+            <th>Log Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fileHistory in Model.FileHistoryList)
+        {
+            <tr class="rowstate_@fileHistory.JobStatus">
+                <td>@fileHistory.FileName</td>
+                <td >@fileHistory.JobStatus</td>
+                <td>@fileHistory.AccessDate</td>
+                <td>@fileHistory.LogText</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .table {
+        /* Add your CSS styling here */
+        /* Example styles */
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .rowstate_Success {
+        background-color: #b6d4ee;
+    }
+
+    .rowstate_Failed {
+        background-color: #e58f81;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+</style>
+
+
+<script>
+    setInterval(function(){location.reload();},20000)
+</script>
